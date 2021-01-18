@@ -8,24 +8,24 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Models.Commands
 {
-  class MovingFormCommand : ICommand
-  {
-
-    private MoveAction MoveAction;
-
-    public MovingFormCommand(MoveAction _moveAction)
+    class MovingFormCommand : ICommand
     {
-      MoveAction = _moveAction;
-    }
 
-    public void Cancel()
-    {
-      MoveAction.StopMoving();
-    }
+        private MoveAction MoveAction;
 
-    public void Execute()
-    {
-      MoveAction.MoveUp();
+        public MovingFormCommand(MoveAction moveAction)
+        {
+            MoveAction = moveAction;
+        }
+        public void Execute()
+        {
+            MoveAction.MoveUp();
+        }
+
+        public void Cancel()
+        {
+            MoveAction.StopMoving();
+        }
+       
     }
-  }
 }

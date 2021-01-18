@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Models.Commands
 {
-  public class ShowMessageCommand : ICommand
-  {
-    private NotificationAction messageAction;
-
-    public ShowMessageCommand(NotificationAction _messageAction)
+    public class ShowMessageCommand : ICommand
     {
-      messageAction = _messageAction;
-    }
+        private NotificationAction NotificationAction;
 
-    public void Cancel()
-    {
-      messageAction.HideNotification();
-    }
+        public ShowMessageCommand(NotificationAction notifcationAction)
+        {
+            this.NotificationAction = notifcationAction;
+        }
 
-    public void Execute()
-    {
-      messageAction.ShowNotification();
+        public void Execute()
+        {
+            NotificationAction.ShowNotification();
+        }
+
+        public void Cancel()
+        {
+            NotificationAction.HideNotification();
+        }
     }
-  }
 }

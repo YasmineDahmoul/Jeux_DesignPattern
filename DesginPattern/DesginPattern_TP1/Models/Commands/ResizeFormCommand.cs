@@ -8,23 +8,24 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Models.Commands
 {
-  public class ResizeFormCommand : ICommand
-  {
-    private ResizeAction Resize;
-
-    public ResizeFormCommand(ResizeAction _Resize)
+    public class ResizeFormCommand : ICommand
     {
-      this.Resize = _Resize;
-    }
+        private ResizeAction Resize;
 
-    public void Cancel()
-    {
-      Resize.StopResizing();
-    }
+        public ResizeFormCommand(ResizeAction resize)
+        {
+            this.Resize = resize;
+        }
 
-    public void Execute()
-    {
-      Resize.Resizing();
+        public void Execute()
+        {
+            Resize.Resizing();
+        }
+
+        public void Cancel()
+        {
+            Resize.StopResizing();
+        }
+
     }
-  }
 }

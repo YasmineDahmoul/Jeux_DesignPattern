@@ -8,44 +8,41 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Models
 {
-  public class Container : ISubject
-  {
-
-    private List<IObserver> Forms = new List<IObserver>();
-
-    public IAction Action;
-
-    #region Constractors
-
-    public Container() { }
-
-    public Container(IAction _action) 
+    public class Container : ISubject
     {
-      Action = _action;
+
+        private List<IObserver> Formes = new List<IObserver>();
+
+        public IAction Action;
+
+
+        public Container() { }
+
+        public Container(IAction action)
+        {
+            Action = action;
+        }
+
+        public void Notification()
+        {
+            foreach (var forme in Formes)
+                forme.Update();
+        }
+
+        public void Subscribe(IObserver forme)
+        {
+            Formes.Add(forme);
+        }
+
+        public void Unsubscribe(IObserver forme)
+        {
+            Formes.Remove(forme);
+        }
+
+        public IAction State()
+        {
+            return Action;
+        }
+
     }
-
-    #endregion
-
-    public void Notification()
-    {
-      foreach (var form in Forms)
-        form.Update();
-    }
-
-    public void Subscribe(IObserver shape)
-    {
-      Forms.Add(shape);
-    }
-
-    public void Unsubscribe(IObserver shape)
-    {
-      Forms.Remove(shape);
-    }
-
-    public IAction State()
-    {
-      return Action;
-    }
-
-  }
 }

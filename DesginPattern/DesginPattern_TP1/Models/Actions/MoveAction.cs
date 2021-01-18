@@ -7,27 +7,28 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Actions.Models
 {
-  public class MoveAction : IAction
-  {
-    public void ActionForme()
+    public class MoveAction : IAction
     {
-      throw new NotImplementedException();
+        public void ActionForme()
+        {
+
+        }
+
+        public string GetAction()
+        {
+            return "Move";
+        }
+
+        public void MoveUp()
+        {
+            Console.WriteLine("Move up");
+        }
+
+        public void StopMoving()
+        {
+            Console.WriteLine("stop moving");
+
+        }
+
     }
-
-    public string GetAction()
-    {
-      return "Move";
-    }
-
-    public void MoveUp()
-    {
-
-    }
-
-    public void StopMoving()
-    {
-
-    }
-
-  }
 }

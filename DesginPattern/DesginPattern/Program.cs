@@ -3,9 +3,8 @@ using DesignPatternCL.Actions.Models;
 using DesignPatternCL.Interfaces;
 using DesignPatternCL.Models;
 using DesignPatternCL.Models.Actions;
-using DesignPatternCL.Models.Shapes;
-using DesignPatternCL.Models.Shapes.Decorators;
-using DesignPatternCL.Repositories;
+using DesignPatternCL.Models.Formes;
+using DesignPatternCL.Models.Formes.Decorators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,106 +13,86 @@ using System.Threading.Tasks;
 
 namespace DesginPattern
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
-            //// TP1 ===> Singleton
-            //LogRepository logRepository = new LogRepository();
+        static void Main(string[] args)
+        {
+            // ====> Faactory & Strategy 
 
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    logRepository.Insert(new Log()
-            //    {
-            //        Session = $"User {i}",
-            //        Object = $"Object {i}",
-            //        Action = $"Action {i}"
-            //    });
+            IAction Move = ActionFactory.Create(ActionFactory.ActionType.Move);
+            IAction Notification = ActionFactory.Create(ActionFactory.ActionType.Notification);
+            IAction Resize = ActionFactory.Create(ActionFactory.ActionType.Resize);
 
-            //}
+            List<Forme> formes = new List<Forme>();
+            Container c = new Container();
+            formes.Add(FormeFactory.Create(FormeFactory.Type.Rectangle, Move, c));
+            formes.Add(FormeFactory.Create(FormeFactory.Type.Circle, Notification, c));
+            formes.Add(FormeFactory.Create(FormeFactory.Type.Triangle, Resize, c));
 
-            //var l = logRepository.Get();
-
-            //Console.ReadKey();
-            ////**************************************************************************
-
-            ////TP2 ====> Faactory & Strategy 
-
-
-            //IAction Move = ActionFactory.Create(ActionFactory.ActionType.Move);
-            //IAction Notification = ActionFactory.Create(ActionFactory.ActionType.Notification);
-            //IAction Resize = ActionFactory.Create(ActionFactory.ActionType.Resize);
-
-            //List<Form> forms = new List<Form>();
-            //Container  c = new Container();
-            //forms.Add(FormFactory.Create(FormFactory.Type.Rectangle, Move, c));
-            //forms.Add(FormFactory.Create(FormFactory.Type.Circle, Notification, c));
-            //forms.Add(FormFactory.Create(FormFactory.Type.Square, Resize, c));
-
-            //foreach (var form in forms)
-            //{
-            //    Console.WriteLine();
-            //    Console.WriteLine($"  * form : {form.GetForm()} ===>  {form.Action.GetAction()}");
-            //}
-            ////******************************************************************
-            //// TP4 ====> Observateur
+            foreach (var form in formes)
+            {
+                Console.WriteLine();
+                Console.WriteLine("  * form : " + form.GetForme() + " ===>  " + form.Action.GetAction());
+            }
+            //******************************************************************
+            //  ====> Observateur
 
 
-            //Container container = new Container(ActionFactory.Create(ActionFactory.ActionType.Resize));
+            Container container = new Container(ActionFactory.Create(ActionFactory.ActionType.Resize));
 
-            //Form rectangle = FormFactory.Create(FormFactory.Type.Rectangle, ActionFactory.Create(ActionFactory.ActionType.Resize), container);
-            //Form circle = FormFactory.Create(FormFactory.Type.Circle, ActionFactory.Create(ActionFactory.ActionType.Notification), container);
-            //Form square = FormFactory.Create(FormFactory.Type.Square, ActionFactory.Create(ActionFactory.ActionType.Move), container);
+            Forme rectangle = FormeFactory.Create(FormeFactory.Type.Rectangle, ActionFactory.Create(ActionFactory.ActionType.Resize), container);
+            Forme circle = FormeFactory.Create(FormeFactory.Type.Circle, ActionFactory.Create(ActionFactory.ActionType.Notification), container);
+            Forme triangle = FormeFactory.Create(FormeFactory.Type.Triangle, ActionFactory.Create(ActionFactory.ActionType.Move), container);
 
-            //Console.WriteLine($" {rectangle.GetForm()} - {rectangle.Action.GetAction()}");
-            //Console.WriteLine($" {circle.GetForm()} - {circle.Action.GetAction()}");
-            //Console.WriteLine($" {square.GetForm()} - {square.Action.GetAction()}");
+            Console.WriteLine(rectangle.GetForme() + " - " + rectangle.Action.GetAction());
+            Console.WriteLine(circle.GetForme() + " -" + circle.Action.GetAction());
+            Console.WriteLine(triangle.GetForme() + " - " + triangle.Action.GetAction());
 
-            //Console.WriteLine();
-            //Console.WriteLine("========= Subscribe rectangle && square && ellipse");
-            //Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("========= Subscribe rectangle && Triangle && circle");
+            Console.WriteLine();
 
-            //container.Subscribe(rectangle);
-            //container.Subscribe(circle);
-            //container.Subscribe(square);
-            //container.Notification();
-            //Console.WriteLine($" {rectangle.GetForm()} - {rectangle.Action.GetAction()}");
-            //Console.WriteLine($" {circle.GetForm()} - {circle.Action.GetAction()}");
-            //Console.WriteLine($" {square.GetForm()} - {square.Action.GetAction()}");
+            container.Subscribe(rectangle);
+            container.Subscribe(circle);
+            container.Subscribe(triangle);
+            container.Notification();
+            Console.WriteLine(rectangle.GetForme() + " - " + rectangle.Action.GetAction());
+            Console.WriteLine(circle.GetForme() + " - " + circle.Action.GetAction());
+            Console.WriteLine(triangle.GetForme() + " - " + triangle.Action.GetAction());
 
-            //Console.WriteLine();
-            //Console.WriteLine("========= Unsubscribe rectangle && square");
-            //Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("========= Unsubscribe rectangle && triangle");
+            Console.WriteLine();
 
-            //container.Unsubscribe(rectangle);
-            //container.Unsubscribe(square);
-            //container.Action = ActionFactory.Create(ActionFactory.ActionType.Resize);
-            //container.Notification();
-            //Console.WriteLine($" {rectangle.GetForm()} - {rectangle.Action.GetAction()}");
-            //Console.WriteLine($" {circle.GetForm()} - {circle.Action.GetAction()}");
-            //Console.WriteLine($" {square.GetForm()} - {square.Action.GetAction()}");
+            container.Unsubscribe(rectangle);
+            container.Unsubscribe(triangle);
+            container.Action = ActionFactory.Create(ActionFactory.ActionType.Resize);
+            container.Notification();
+            Console.WriteLine(rectangle.GetForme() + " - " + rectangle.Action.GetAction());
+            Console.WriteLine(circle.GetForme() + " - " + circle.Action.GetAction());
+            Console.WriteLine(triangle.GetForme() + " - " + triangle.Action.GetAction());
 
 
             //**************************************
 
-            Forme rectangle = FormeFactory.Create(FormeFactory.Type.Rectangle, ActionFactory.Create(ActionFactory.ActionType.Notification), new Container());
+            Forme rect = FormeFactory.Create(FormeFactory.Type.Rectangle, ActionFactory.Create(ActionFactory.ActionType.Notification), new Container());
 
-            Forme c = new DashedBorder(rectangle);
-            Forme r1 = new DashedBorder(c);
+            Forme c1 = new DashedBorder(rect);
+            Forme r1 = new DashedBorder(c1);
             r1 = FormeFactory.Create(FormeFactory.Type.Circle, ActionFactory.Create(ActionFactory.ActionType.Resize), new Container());
             Forme r2 = new DashedBorder(r1);
             r1 = new DashedBorder(r1);
             r1 = new SolidBorder(r1);
-            Console.WriteLine($"{rectangle.GetForm()} - {rectangle.GetPoid()}");
-            Console.WriteLine($"{c.GetForm()} - {c.GetPoid()}");
+            Console.WriteLine(rect.GetForme() + " - " + rect.GetPoid());
+            Console.WriteLine(c1.GetForme() + " - " + c1.GetChildren());
 
-            c = new SolidBorder(c);
+            c1 = new SolidBorder(c1);
 
-            Console.WriteLine($"{r1.GetForm()} - {r1.GetPoid()}");
-            Console.WriteLine($"{c.GetForm()} - {c.GetPoid()}");
+            Console.WriteLine(r1.GetForme() + " - " + r1.GetPoid());
+            Console.WriteLine(c1.GetForme() + " - " + c1.GetChildren());
 
 
             Console.ReadKey();
+        }
     }
-  }
 }

@@ -8,27 +8,26 @@ using System.Windows;
 
 namespace DesignPatternCL.Models.Actions
 {
-  public class NotificationAction : IAction
-  {
-    public void ActionForme()
+    public class NotificationAction : IAction
     {
-      throw new NotImplementedException();
-    }
+        public void ActionForme()
+        {
+        }
 
-    public string GetAction()
-    {
-      return "Notification";
-    }
+        public string GetAction()
+        {
+            return "Notification";
+        }
 
-    public void ShowNotification()
-    {
-      Console.WriteLine("Hello World");
-    }
+        public void ShowNotification()
+        {
+            Console.WriteLine("Show notification");
+        }
 
-    public void HideNotification()
-    {
-      
-    }
+        public void HideNotification()
+        {
+            Console.WriteLine("Hide notification");
+        }
 
-  }
+    }
 }
