@@ -1,5 +1,4 @@
-﻿using DesginPattern_TP1.Models.Shapes;
-using DesignPatternCL.Interfaces;
+﻿using DesignPatternCL.Interfaces;
 using DesignPatternCL.Models.Shapes;
 using System;
 using System.Collections.Generic;
@@ -9,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Models
 {
-  public class FormFactory
+  public class FormeFactory
   {
     public enum Type
     {
       Rectangle,
       Circle,
-      Square
+      Triangle
     }
 
-    private FormFactory() { }
+    private FormeFactory() { }
 
-    public static Form Create(Type shapeType, IAction action, Container container)
+    public static Forme Create(Type shapeType, IAction action, Container container)
     {
       switch (shapeType)
       {
@@ -28,8 +27,8 @@ namespace DesignPatternCL.Models
           return new Circle(action, container);
         case Type.Rectangle:
           return new Rectangle(action, container);
-        case Type.Square:
-          return new Square(action, container);
+        case Type.Triangle:
+          return new Triangle(action, container);
        
         default: return new Circle(action, container);
       }

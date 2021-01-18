@@ -13,7 +13,7 @@ namespace DesignPatternCL.Models.Shapes.Decorators
 
     #region Constractors
 
-    public SolidBorder(Form Form) : base(Form)
+    public SolidBorder(Forme Form) : base(Form)
     {
 
     }
@@ -34,7 +34,7 @@ namespace DesignPatternCL.Models.Shapes.Decorators
       return Form.GetForm();
     }
 
-    public override FormFactory.Type GetType()
+    public override FormeFactory.Type GetType()
     {
       return Form.GetType();
     }

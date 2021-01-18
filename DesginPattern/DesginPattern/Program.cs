@@ -96,12 +96,12 @@ namespace DesginPattern
 
             //**************************************
 
-            Form rectangle = FormFactory.Create(FormFactory.Type.Rectangle, ActionFactory.Create(ActionFactory.ActionType.Notification), new Container());
+            Forme rectangle = FormeFactory.Create(FormeFactory.Type.Rectangle, ActionFactory.Create(ActionFactory.ActionType.Notification), new Container());
 
-            Form c = new DashedBorder(rectangle);
-            Form r1 = new DashedBorder(c);
-            r1 = FormFactory.Create(FormFactory.Type.Circle, ActionFactory.Create(ActionFactory.ActionType.Resize), new Container());
-            Form r2 = new DashedBorder(r1);
+            Forme c = new DashedBorder(rectangle);
+            Forme r1 = new DashedBorder(c);
+            r1 = FormeFactory.Create(FormeFactory.Type.Circle, ActionFactory.Create(ActionFactory.ActionType.Resize), new Container());
+            Forme r2 = new DashedBorder(r1);
             r1 = new DashedBorder(r1);
             r1 = new SolidBorder(r1);
             Console.WriteLine($"{rectangle.GetForm()} - {rectangle.GetPoid()}");

@@ -11,18 +11,18 @@ using System.Windows.Controls;
 
 namespace DesignPatternCL.Models.Shapes
 {
-  public class Rectangle : Form
+  public class Rectangle : Forme
   {
-    public List<Form> Forms = new List<Form>();
+    public List<Forme> Forms = new List<Forme>();
 
     #region Operations
 
-    public override void AddForm(Form shape)
+    public override void AddForm(Forme shape)
     {
       this.Forms.Add(shape);
     }
 
-    public override void DeleteForm(Form shape)
+    public override void DeleteForm(Forme shape)
     {
       this.Forms.Remove(shape);
     }
@@ -45,10 +45,10 @@ namespace DesignPatternCL.Models.Shapes
       Action = action;
     }
 
-    public Rectangle(IAction action, List<Form> forms,Container container)
+    public Rectangle(IAction action, List<Forme> forms,Container container)
     {
       Action = action;
-      Forms = new List<Form>(forms);
+      Forms = new List<Forme>(forms);
       Container = container;
     }
 
@@ -59,9 +59,9 @@ namespace DesignPatternCL.Models.Shapes
       return "Rectangle";
     }
 
-    public override FormFactory.Type GetType()
+    public override FormeFactory.Type GetType()
     {
-      return FormFactory.Type.Rectangle;
+      return FormeFactory.Type.Rectangle;
     }
 
     public override int GetPoid()

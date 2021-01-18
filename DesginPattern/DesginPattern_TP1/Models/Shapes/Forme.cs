@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Models.Shapes
 {
-  public abstract class Form : IObserver
+  public abstract class Forme : IObserver
   {
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
@@ -21,18 +21,18 @@ namespace DesignPatternCL.Models.Shapes
 
     public abstract string GetForm();
 
-    public abstract new FormFactory.Type GetType();
+    public abstract new FormeFactory.Type GetType();
 
     #endregion
 
     #region Container methods  (Composite)
 
-    public virtual void AddForm(Form shape)
+    public virtual void AddForm(Forme shape)
     {
         
     }
 
-    public virtual void DeleteForm(Form shape)
+    public virtual void DeleteForm(Forme shape)
     {
      
     }

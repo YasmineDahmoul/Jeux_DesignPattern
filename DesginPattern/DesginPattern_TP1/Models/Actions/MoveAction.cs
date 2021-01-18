@@ -9,7 +9,7 @@ namespace DesignPatternCL.Actions.Models
 {
   public class MoveAction : IAction
   {
-    public void DoSomething()
+    public void ActionForme()
     {
       throw new NotImplementedException();
     }

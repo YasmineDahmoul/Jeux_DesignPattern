@@ -10,7 +10,7 @@ namespace DesignPatternCL.Models.Actions
 {
   public class NotificationAction : IAction
   {
-    public void DoSomething()
+    public void ActionForme()
     {
       throw new NotImplementedException();
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Models.Shapes
 {
-  public class Circle : Form
+  public class Circle : Forme
   {
     #region Constractors
 
@@ -36,9 +36,9 @@ namespace DesignPatternCL.Models.Shapes
       return "Circle";
     }
 
-    public override FormFactory.Type GetType()
+    public override FormeFactory.Type GetType()
     {
-      return FormFactory.Type.Circle;
+      return FormeFactory.Type.Circle;
     }
   }
 }

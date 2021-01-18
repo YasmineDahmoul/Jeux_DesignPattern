@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DesignPatternCL.Models.Shapes
 {
-  public class Square : Form
+  public class Triangle : Forme
   {
     #region Constractors
 
-    public Square(IAction action, Container container)
+    public Triangle(IAction action, Container container)
     {
       Container = container;
       Action = action;
@@ -32,9 +32,9 @@ namespace DesignPatternCL.Models.Shapes
       return "Square";
     }
 
-    public override FormFactory.Type GetType()
+    public override FormeFactory.Type GetType()
     {
-      return FormFactory.Type.Square;
+      return FormeFactory.Type.Triangle;
     }
   }
 }

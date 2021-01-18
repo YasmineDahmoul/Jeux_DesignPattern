@@ -8,7 +8,7 @@ namespace DesignPatternCL.Interfaces
 {
   public interface IAction
   {
-    void DoSomething();
+    void ActionForme();
 
     string GetAction();
   }
