@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Jeux_DesignPattern.Models.Commands
 {
-    public class ResizeFormCommand : ICommand
+    public class ResizeCommand : ICommand
     {
         private ResizeAction Resize;
 
-        public ResizeFormCommand(ResizeAction resize)
+        public ResizeCommand(ResizeAction resize)
         {
             this.Resize = resize;
         }

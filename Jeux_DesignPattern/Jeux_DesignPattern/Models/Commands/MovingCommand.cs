@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Jeux_DesignPattern.Models.Commands
 {
-    class MovingFormCommand : ICommand
+    class MovingCommand : ICommand
     {
 
         private MoveAction MoveAction;
 
-        public MovingFormCommand(MoveAction moveAction)
+        public MovingCommand(MoveAction moveAction)
         {
             MoveAction = moveAction;
         }
