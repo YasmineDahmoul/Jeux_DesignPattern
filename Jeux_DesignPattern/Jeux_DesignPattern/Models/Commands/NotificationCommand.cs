@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Jeux_DesignPattern.Models.Commands
 {
-    public class ShowMessageCommand : ICommand
+    public class NotificationCommand : ICommand
     {
         private NotificationAction NotificationAction;
 
-        public ShowMessageCommand(NotificationAction notifcationAction)
+        public NotificationCommand(NotificationAction notifcationAction)
         {
             this.NotificationAction = notifcationAction;
         }
