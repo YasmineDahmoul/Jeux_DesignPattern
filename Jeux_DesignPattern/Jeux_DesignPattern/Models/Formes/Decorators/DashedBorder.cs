@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Jeux_DesignPattern.Models.Formes.Decorators
 {
-    public class DashedBorder : FormDecorator
+    public class DashedBorder : FormeDecorator
     {
         public DashedBorder(Forme Form) : base(Form)
         {

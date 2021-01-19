@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jeux_DesignPattern.Models.Formes.Decorators
 {
-    public class SolidBorder : FormDecorator
+    public class SolidBorder : FormeDecorator
     {
         public SolidBorder(Forme Form) : base(Form)
         {

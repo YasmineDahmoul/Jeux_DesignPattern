@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Jeux_DesignPattern.Models.Formes
 {
-    public abstract class FormDecorator : Forme
+    public abstract class FormeDecorator : Forme
     {
         public Forme Form;
 
-        public FormDecorator(Forme From)
+        public FormeDecorator(Forme From)
         {
             this.Form = From;
         }
